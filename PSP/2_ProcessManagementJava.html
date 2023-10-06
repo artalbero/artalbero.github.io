@@ -107,7 +107,11 @@
                 </section>
                 <section>
                     <h4>Checking the state of the process</h4>
-                    <p>waitFor() returns an integer value. <strong>This value is 0 if everything is correct</strong> and usually a negative value if there has been any problem. We can check the final state of a process by comparing its return value:</p>
+                    <p>waitFor() returns an integer value. <strong>This value is
+                            0 if everything is correct</strong> and usually a
+                        negative value if there has been any problem. We can
+                        check the final state of a process by comparing its
+                        return value:</p>
                     <pre class="java"><code data-trim data-noescape>
                         int value = p.waitFor();
                         if(value!=0)
@@ -118,21 +122,30 @@
                 </section>
                 <section>
                     <h2>3. Finishing processes</h2>
-                    <p>We can finish a process that we previously created in our program by calling the destroy method. </p>
+                    <p>We can finish a process that we previously created in our
+                        program by calling the destroy method. </p>
                     <pre class="java"><code data-trim data-noescape>
                         ProcessBuilder pb = new ProcessBuilder(...);
                         Process p = pb.start();
                         ...
                         p.destroy();
                     </code></pre>
-                    <p>By doing this, the Java garbage collector will free all the resources associated to that process.</p>
-                    
+                    <p>By doing this, the Java garbage collector will free all
+                        the resources associated to that process.</p>
+
                 </section>
                 <section>
                     <h2>4. Communicating with processes</h2>
-                    
-                    <p>In Java, every process has its own communication interface. </p>
-                    <p>If we want to communicate with this subprocess, we have to get its input and output streams. This allows bidirectional communication.</p> 
+
+                    <p>In Java, every process has its own communication
+                        interface. </p>
+                    <p>If we want to communicate with this subprocess, we have
+                        to get its input and output streams. This allows
+                        bidirectional communication.</p>
+                </section>
+                <section>
+                    <h3>Example</h3>
+                    <p>A program that reads the output of a child process and prints its output in the screen:</p>
                     <pre class="java"> <code data-trim data-noescape>
                         Process p = pb.start();
                         BufferedReader br = new BufferedReader(
@@ -148,9 +161,13 @@
                 </section>
                 <section>
                     <h3>Dealing with the process data</h3>
-                    <p>Some OS uses UTF-8 (Linux, Mac OSX...) as encoding format (Windows), whereas other systems use their own encoding format.</p>
-                    <p>If we want to avoid any kind of problem, we can use a second argument when creating the InputStreamReader to tell the JVM which is the expected encoding format.</p>
-                    <pre class ="java"><code data-trim data-noescape>
+                    <p>Some OS uses UTF-8 (Linux, Mac OSX...) as encoding format
+                        (Windows), whereas other systems use their own encoding
+                        format.</p>
+                    <p>If we want to avoid any kind of problem, we can use a
+                        second argument when creating the InputStreamReader to
+                        tell the JVM which is the expected encoding format.</p>
+                    <pre class="java"><code data-trim data-noescape>
                         BufferedReader br = new BufferedReader(
                             new InputStreamReader(p.getInputStream(), "UTF-8"));
                     </code></pre>
@@ -186,15 +203,17 @@
                     </code></pre>
                 </section>
                 <section>
-                    <h3>Do exercises 1 and 2 from the document</h3>    
+                    <h3>Do exercises 1 and 2 from the document</h3>
+                </section>
 
-                </div>
+            </div>
+        </div>
 
-                <script src="dist/reveal.js"></script>
-                <script src="plugin/notes/notes.js"></script>
-                <script src="plugin/markdown/markdown.js"></script>
-                <script src="plugin/highlight/highlight.js"></script>
-                <script>
+        <script src="dist/reveal.js"></script>
+        <script src="plugin/notes/notes.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/highlight/highlight.js"></script>
+        <script>
                 // More info about initialization & config:
                 // - https://revealjs.com/initialization/
                 // - https://revealjs.com/config/
@@ -206,7 +225,7 @@
                     plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
                 });
             </script>
-                <script src="plugin/markdown/markdown.js"></script>
+        <script src="plugin/markdown/markdown.js"></script>
 
-            </body>
-        </html>
+    </body>
+</html>
