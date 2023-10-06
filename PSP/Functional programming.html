@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)https://nachoiborraies.github.io/java/md/en/slides/11a.html -->
+<html lang="es" class="reveal-full-page"><head><meta http-equiv="Content-Type"
+			content="text/html; charset=UTF-8">
+
+		<title>Functional programming</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="./Functional programming_files/reveal.css">
+		<link rel="stylesheet" href="./Functional programming_files/white.css"
+			id="theme">
+		<link rel="stylesheet" href="./Functional programming_files/custom.css">
+		<style type="text/css">.hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}</style></head>
+
+	<body
+		style="transition: -webkit-transform 0.8s ease 0s; --slide-width: 80%px; --slide-height: 700px;"
+		class="reveal-viewport">
+		<div class="reveal slide center focused has-horizontal-slides ready"
+			role="application" data-transition-speed="default"
+			data-background-transition="fade" style>
+			<div class="slides"
+				style="width: 768px; height: 700px; inset: 50% auto auto 50%; transform: translate(-50%, -50%) scale(1.05326);">
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 192px; display: block;" class="present"><h2
+						id="functional-programming">Functional programming</h2>
+					<h3 id="introduction-to-functional-programming">Introduction to functional
+						programming</h3>
+				</section>
+
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 95px; display: block;" hidden aria-hidden="true" class="future"><h2
+						id="functional-programming">Functional programming</h2>
+					<ul>
+						<li>Programming paradigm (a way of implementing programs)</li>
+						<li>Declarative: we tell the program how things are, not the sequence of
+							commands to solve the problem (<em>imperative</em>)</li>
+					</ul>
+				</section>
+
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 0px; display: block;" hidden aria-hidden="true" class="future"><h2
+						id="functional-programming-features">Functional programming features</h2>
+					<ul>
+						<li><strong>Referential transparency</strong>: calling a function with the
+							same arguments must produce always the same result</li>
+						<li><strong>Data immutability</strong></li>
+						<li><strong>Function composition</strong>: the output of a function can be
+							joined with the input of next one (functions are treated as data)</li>
+						<li><strong>First order functions</strong>: functions that are passed as
+							parameters to another functions</li>
+					</ul>
+				</section>
+
+				<section style="top: 350px; display: none;" hidden aria-hidden="true"
+					class="future">
+					<h2>Example of side effects</h2>
+					<p>This function gets different result every time we call it with parameter
+						1</p>
+					<pre><code data-trim="" data-noescape="" class="hljs cpp"><span class="hljs-keyword">int</span>&nbsp;externalValue&nbsp;=&nbsp;<span class="hljs-number">1</span>;
+<span class="hljs-function"><span class="hljs-keyword">int</span>&nbsp;<span class="hljs-title">aFunction</span><span class="hljs-params">(<span class="hljs-keyword">int</span>&nbsp;param)</span>
+</span>{
+    externalValue++;
+    <span class="hljs-keyword">return</span>&nbsp;externalValue&nbsp;+&nbsp;param;
+}        </code></pre>
+				</section>
+
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 350px; display: none;" hidden aria-hidden="true" class="future"><h2
+						id="functional-languages">Functional languages</h2>
+					<ul>
+						<li><strong>Pure</strong>: they only work with functional paradigm<ul>
+								<li>Haskell, Miranda</li>
+							</ul>
+						</li>
+						<li><strong>Hybrid</strong>: they were conceived to be functional, but
+							work with other paradigms as well<ul>
+								<li>Scala, Clojure</li>
+							</ul>
+						</li>
+						<li><strong>Other</strong>: many currently popular languages have
+							incorporated some functional features<ul>
+								<li>Java, C#, JavaScript, Python...</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 350px; display: none;" hidden aria-hidden="true" class="future"><h2
+						id="imperative-example">Imperative example</h2>
+					<p>Filter adult people from a <em>people</em> list</p>
+					<pre><code class="java hljs">List&lt;Person&gt; adultPeople = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; people.size(); i++) {
+    <span class="hljs-keyword">if</span> (people.get(i).getAge() &gt;= <span class="hljs-number">18</span>)
+        adultPeople.add(people.get(i));
+}            </code></pre></section>
+
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 350px; display: none;" hidden aria-hidden="true" class="future"><h2
+						id="declarative-example">Declarative example</h2>
+					<p>Filter adult people from a <em>people</em> list</p>
+					<pre><code class="java hljs">List&lt;Person&gt; adultPeople = people.stream()
+.filter(p -&gt; p.getAge() &gt;= <span class="hljs-number">18</span>)
+.collect(Collectors.toList()); </code></pre></section>
+
+				<section data-markdown data-markdown-parsed="true"
+					style="top: 350px; display: none;" hidden aria-hidden="true" class="future"><h2
+						id="conclusions">Conclusions</h2>
+					<ul>
+						<li>Functional programming is usually shorter and less error prone</li>
+						<li>In Java, it is mainly focused on:<ul>
+								<li>Implementing functional interfaces with lambda expressions</li>
+								<li>Managing collections through streams</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+			</div>
+			<div class="backgrounds"><div class="slide-background present"
+					data-loaded="true" style="display: block;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" data-loaded="true" style="display: block;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" data-loaded="true" style="display: block;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" style="display: none;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" style="display: none;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" style="display: none;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" style="display: none;"><div
+						class="slide-background-content"></div></div><div
+					class="slide-background future" style="display: none;"><div
+						class="slide-background-content"></div></div></div><div
+				class="slide-number" style="display: none;"></div><aside class="controls"
+				data-controls-layout="bottom-right" data-controls-back-arrows="faded"
+				style="display: none;"><button class="navigate-left"
+					aria-label="previous slide" disabled="disabled"><div class="controls-arrow"></div></button>
+				<button class="navigate-right enabled highlight" aria-label="next slide"><div
+						class="controls-arrow"></div></button>
+				<button class="navigate-up" aria-label="above slide" disabled="disabled"><div
+						class="controls-arrow"></div></button>
+				<button class="navigate-down" aria-label="below slide" disabled="disabled"><div
+						class="controls-arrow"></div></button></aside><div class="progress"
+				style="display: none;"><span></span></div><div class="speaker-notes"
+				data-prevent-swipe tabindex="0"></div><div class="pause-overlay"></div><div
+				class="aria-status" aria-live="polite" aria-atomic="true"
+				style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">Functional
+				programming Introduction to functional programming </div></div>
+
+		<script src="./Functional programming_files/reveal.js"></script>
+		<script src="./Functional programming_files/zoom.js"></script>
+		<script src="./Functional programming_files/markdown.js"></script>
+		<script src="./Functional programming_files/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				center: true,
+                hash: true,
+                width: "80%",
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body></html>

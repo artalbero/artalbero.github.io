@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>2. Process management in Java</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			section{
+				text-align: justify;
+			}
+			</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section>
+                    <h1>Process management in Java</h1>
+                </section>
+                <section>
+                    <h2>1. Creating processes</h2>
+                    <p>Creating processes in Java can be achieved in two ways.</p>
+                    <ul>
+                        <li>Using the ProcessBuilder class. </li>
+                        <li>Using the Runtime class. </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>1.1. Using ProcessBuilder class</h3>
+                    <p>We need to create an array of strings with the name of the program to run and its arguments, and then, call the start method.</p>
+                    <p style="color:red"> aquí va código</p>
+                </section>
+                <section>
+                    <h3>1.2. Using the Runtime class</h3>
+                    <p>We also need to create an array of strings with the name of the program and its arguments, and then we call the exec method with that array as a parameter.</p>
+                    <p style="color:red"> aquí va código</p>
+                </section>
+
+
+            </div>
+
+            <script src="dist/reveal.js"></script>
+            <script src="plugin/notes/notes.js"></script>
+            <script src="plugin/markdown/markdown.js"></script>
+            <script src="plugin/highlight/highlight.js"></script>
+            <script>
+                // More info about initialization & config:
+                // - https://revealjs.com/initialization/
+                // - https://revealjs.com/config/
+                Reveal.initialize({
+                    hash: true,
+    
+                    // Learn about plugins: https://revealjs.com/plugins/
+                    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+                });
+            </script>
+            <script src="plugin/markdown/markdown.js"></script>
+            
+        </body>
+    </html>
