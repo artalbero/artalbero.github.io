@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>1. First Steps with threads</title>
+
+		<link rel="stylesheet" href="../../reveal/dist/reset.css">
+		<link rel="stylesheet" href="../../reveal/dist/reveal.css">
+		<link rel="stylesheet" href="../../reveal/dist/theme/white.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../../reveal/plugin/highlight/monokai.css">
+		<style>
+			section{
+				text-align: justify;
+			}
+			</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Introduction to concurrent programming</h1>
+				</section>
+				<section>
+				
+						<h2>1. Programs and processes</h2>
+						<ul>
+						<li>							
+							<strong>Program:</strong> A set of instructions packaged as a bundle, that helps the user solve a problem or complete a task.</li> 
+							<ul><li>When a program is running, it becomes a process.</li></ul>
+					<li><strong>Process:</strong> A set of data and instructions placed in memory and handled by the processor and the operating system to complete a task.</li>
+					</ul>
+				</section>	
+				<section>
+					<h4>Elements of a process</h4>
+					<ul>
+						<li><p><strong>A program counter</strong>: an index that points to the concrete instruction we are currently running among all the instructions that are part of the program.</p></li>
+						<li><p><strong>A memory-space</strong>: Where all the data and instructions needed by the program are placed, loaded and edited while the program is running.</p></li>
+					</ul>
+				</section>
+				<section>
+					<h3>1.1 The operating system and its processes</h3>
+					<p>The OS is the intermediary between the user and the programs they use. It runs the programs and optimizes the usage of all the computer resources.</p>
+					<p>All the modern OS can run several programs at the same time. That type of concurrency is commonly called multitask.</p>
+					<p>However, it's not the kind of concurrency we are going to deal with in this unit.</p>
+				</section>
+				<section>
+					<h2>2. Concurrent Programming</h2>
+					<p>Concurrency lets the system run several processes at the same time.</p>
+					<p>We can run all the tasks in a single processor, in multiple processors or in several cores inside a processor.
+				</section>
+				<section>
+					<h4>Single processor</h4>
+					<p><strong>Concurrency:</strong>There is only one process running at a time. The OS alternates the execution between several processes in order to grant the user the experience of having all tasks running together.</p>
+					<img src="img/14_CPU.png">
+				</section>
+				<section>
+					<h4>Multiple processors or multiple cores</h4>
+					<p><strong>Parallel Processing:</strong>Each core is in charge of running one process. If there are more processes than cores, concurrency is also applied by the OS.</p>
+					
+					<img src="img/14_multipleCores.png">
+				</section>
+				<section>
+					<h2>3. Processes and threads</h2>
+					<ul>
+						<li><strong>Process:</strong> Different programs trying to use the resources of the computer.</li>
+						<li><strong>Threads:</strong> Different subprograms that origin from a main program. They work as the processes, but they share a parent process.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>3.1. Process/Threads states</h3>
+					<p>Each process/thread can be in any of the following states during its life period.</p>
+					<ul style="font-size:0.6em;">
+						<li><strong>New</strong>: the process or thread has been just created, but it has not started running yet.</li>
+						<li><strong>Ready</strong>: the process or thread is not currently running, but it is ready to do it.</li>
+						<li><strong>Running</strong>: the process or thread is currently running on a given core or processor.</li>
+						<li><strong>Locked</strong>: the process or thread is waiting for some event to happen. This event may be a user input, a file unlocking… Whenever this event happens, the process becomes ready.</li>
+						<li><strong>Finished</strong>: the process or thread has finished its task, or the operating system has forced it to finish with an interruption.</li>
+					  </ul>
+					  <img src="img/14_states.png">
+				</section>
+				<section>
+					<h3>3.2. Process/Threads context</h3>
+					<p><strong>Context:</strong> The data saved when a process or thread changes its state from running to ready or locked.</p>
+					<p>When this happens, it has to leave temporarily the processor or core. The OS will save the context data in order to recover it when it comes back to the processor.</p>
+				</section>
+				<section>
+					<h4>Context: Difference between processes and threads</h4>
+					<p>Whereas the processes have completely independent contexts, threads that are part of the same parent process share their memory space. This implies:</p>
+					<ul>
+						<li>Threads are more efficient memory wise.</li>
+						<li>As they share the same memory space, if we are not careful we may alter shared data we did not want to alter.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>3.3. Process/Thread trees</h3>
+					<p>When we run a program, a process is created in memory. Then, other processes or threads may be created inside the application and so on. This creates a tree rooted in the initial program, which is rooted in the OS. We can conclude that <strong>every process/thread has a parent process/thread.</strong></p>
+				</section>
+				<section>
+					<h4>Process/Thread tree of a text processor</h4>
+					<img style="width: 80%;" src="img/14_processesTree.png">
+				</section>
+
+
+					
+				</div>
+		</div>
+
+		<script src="../../reveal/dist/reveal.js"></script>
+		<script src="../../reveal/plugin/notes/notes.js"></script>
+		<script src="../../reveal/plugin/markdown/markdown.js"></script>
+		<script src="../../reveal/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+		<script src="../../reveal/plugin/markdown/markdown.js"></script>
+		
+	</body>
+</html>
