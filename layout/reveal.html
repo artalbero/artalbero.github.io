@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>{{page.title}}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="{{ site.baseurl }}/reveal/dist/reveal.css">
+		<!--<link rel="stylesheet" href="{{ site.baseurl }}/reveal/dist/theme/white.css" id="theme">-->
+        <link rel="stylesheet" href="{{ site.baseurl }}/reveal/dist/theme/beige.css" id="theme">
+		<link rel="stylesheet" href="{{ site.baseurl }}/reveal/plugin/highlight/custom.css">
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                {{content}}
+            </div>
+		</div>
+
+		<script src="{{ site.baseurl }}/reveal/dist/reveal.js"></script>
+		<script src="{{ site.baseurl }}/reveal/plugin/zoom/zoom.js"></script>
+		<script src="{{ site.baseurl }}/reveal/plugin/markdown/markdown.js"></script>
+		<script src="{{ site.baseurl }}/reveal/plugin/highlight/highlight.js"></script>
+		<script>
+
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: false,
+				progress: false,
+				center: true,
+                hash: true,
+                width: "80%",
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealMarkdown, RevealHighlight ]
+			});
+
+		</script>
+
+	</body>
+</html>
