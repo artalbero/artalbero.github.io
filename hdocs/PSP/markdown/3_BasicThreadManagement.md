@@ -7,7 +7,8 @@ Every Java application is a thread. Therefore, Java applications work with threa
 ---
 
 ## 1. Thread States (I)
-![](/artalbero.github.io/hdocs/PSP/img/3_/14_statesChanges.png)
+<img src="https://nachoiborraies.github.io/java/img/14_statesChanges.png"
+     alt="Threads" />
 
 ---
 
