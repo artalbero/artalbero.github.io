@@ -10,33 +10,20 @@
         <link rel="stylesheet" href="../../reveal.js/dist/reset.css">
         <link rel="stylesheet" href="../../reveal.js/dist/reveal.css">
         <link rel="stylesheet" href="../../reveal.js/dist/theme/white.css">
-
-        <link rel="stylesheet" href="../../reveal.js/plugin/highlight/monokai.css">
-       
-        
+        <link rel="stylesheet"
+            href="../../reveal.js/plugin/highlight/monokaiLight.css">
 
     </head>
     <body>
         <div class="reveal">
             <div class="slides">
-                <section data-markdown>
-                    <textarea data-template>
-                        ## Basic Thread Management
-                        ---
-                        We are going to start with basic thread management. This should work fine.
-                        We are also working out how to work with mark down instead of pure html.
-                        ---
-                        ## Main problems
-                        I don't know the sintaxis of markdown, but it should be [easy](https://easy.com).
-                        ---
-                        ```java 
-                        int a = 7;
-                        for(int i = 0; i<a; i++){
-                            System.out.println("Hola mundo " + i);
-                        }
-                        ```
-                    </textarea>
+                <section style="text-align: justify;" 
+                data-markdown="markdown/3_BasicThreadManagement.md"
+                    data-separator="^\n---\n"
+                    data-separator-notes="^Note:"
+                    data-charset="UTF-8">
                 </section>
+
             </div>
         </div>
 
@@ -56,6 +43,6 @@
                 plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
             });
         </script>
-        
+
     </body>
 </html>
