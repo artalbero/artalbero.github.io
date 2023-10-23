@@ -1,4 +1,5 @@
-# Basic Thread Management
+# Basic Thread Management 
+# (PART I)
 
 ---
 ## 0. Threads in Java
@@ -92,3 +93,111 @@ Using the lambda expression (stored in a variable):
 Thread t = new Thread(lambdaRun);
 t.start();
 ```
+
+---
+
+## 2.3 Extending *Thread* or implementing *Runnable*?
+We have two ways of doing the same thing, but each one has its own flavour:
+- Extends Thread: 
+    - You can't extend from any other class. This option is usual in small, simple applications.
+- Implements Runnable:
+    - You can extend from other classes. This option is more usual in complex applications.
+
+---
+
+## 2.4 Example (I)
+To start with something simple, we are going to create a thread that counts from 1 to 10. As we do not need to extend from any other class, we are going to create a Thread subclass. 
+```java
+public class MyCounterThread extends Thread 
+{
+    @Override
+    public void run 
+    {
+        for (int i = 1; i <= 10; i++)
+            System.out.println("Counting " + i);
+    }
+}
+```
+
+---
+
+## 2.4 Example (II)
+Our main program looks like this:
+```java
+public class MyMainCounter 
+{
+    public static void main(String[] args) 
+    {
+        MyCounterThread t = new MyCounterThread();
+        t.start();
+    }
+}
+```
+
+---
+
+### 2.4 Example (III)
+```java
+public class MyMainCounter 
+{
+    public static void main(String[] args) 
+    {
+        MyCounterThread t = new MyCounterThread();
+        t.start();
+        System.exit(0); //New line
+    }
+}
+```
+If you run the program multiple times you will notice:
+- It will not always count to 10!
+
+This is because main program is finished unexpectedly and then all its threads are killed. So our thread only can count until its father is killed.
+
+---
+
+### 2.4 Example (IV)
+```java
+public class MyMainCounter 
+{
+    public static void main(String[] args) 
+    {
+        MyCounterThread t = new MyCounterThread();
+        t.start();
+        System.out.println("Hello!!"); //New Line
+    }
+}
+```
+If you run the program multiple times you will notice:
+- The word "Hello!!" can appear in any place in the count.
+
+This happens because the System.out instruction can be called before the thread ends.
+
+---
+
+### 2.4 Example (V)
+Finally, we try to start the same process twice:
+```java
+public class MyMainCounter 
+{
+    public static void main(String[] args)
+    {
+        MyCounterThread t = new MyCounterThread();
+        t.start();
+        t.start();
+    }
+}
+```
+But an IllegalThreadException is thrown. We can't start the same thread more than once. We need two different Thread objects of the same class to do so.
+
+---
+
+### 2.5 Conclusions
+- The thread runs independent from its father.
+- The thread keeps running until its father finishes.
+- If any thread call the System.exit method, all the threads will finish their execution.
+- There is no way to know the exact order in which the main application and the threads will produce their results.
+- After launching a thread, we cannot call its start method again.
+
+---
+
+### Do Exercise 1 and Exercise 2 of [this document](https://nachoiborraies.github.io/java/md/en/14c)
