@@ -1,5 +1,5 @@
 # Basic Thread Management
-# Part II
+# (Part II)
 
 ---
 
@@ -186,6 +186,114 @@ free by sleeping or yielding. */
 ---
 
 ## Do Exercise 3 of [this document](https://nachoiborraies.github.io/java/md/en/14c)
+
+---
+
+## 5. Finishing and interrupting Threads
+There are two ways of forcing a thread to finish its task: 
+* Using **boolean flags** to tell the thread that it must stop when it checks those flags.
+* Using **interruptions** to make it stop.
+
+---
+
+### 5.1. Finishing threads with boolean flags (1)
+We cannot stop a thread at a given moment. There were a stop and a destroy methods, but now they are deprecated. 
+However, we can ask the method to stop through a boolean flag. This method works in threads that run in any kind of loop.
+
+---
+
+### 5.1. Finishing threads with boolean flags (2)
+Let's define a Thread class killable through a boolean flag
+```java
+public class KillableThread extends Thread 
+{
+    boolean finish = false; //The boolean flag
+
+    public void setFinish(boolean finish)
+    {
+        this.finish = finish;
+    }
+
+    @Override
+    public void run() 
+    {
+        while (!finish) 
+        {
+            ... // Thread task
+        }
+    }
+}
+```
+
+---
+
+### 5.1 Finishing threads with boolean flags (3)
+Then we can apply the setFinish method like this:
+```java
+public static void main(String[] args)
+{
+    KillableThread kt = new KillableThread();
+    kt.start();
+    ...
+    if (someCondition)
+        kt.setFinish(true);
+}
+```
+
+---
+
+## Do Exercise 4 of [this document](https://nachoiborraies.github.io/java/md/en/14c)
+
+---
+
+## 5.2. Finishing threads with interruptions (1)
+We can also use the method .interrupt() from the Thread class.
+```java
+public static void main(String[] args) 
+{
+    Thread t = new Thread(() -> {
+        try 
+        {
+            while (!Thread.currentThread().isInterrupted()) 
+            {
+                System.out.println("Running");
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) { }
+        System.out.println("Finished by an interruption");
+    });
+
+    t.start();
+    try 
+    { 
+        // Wait for a while...
+        Thread.sleep(1000);
+    } catch (InterruptedException e) { }
+
+    t.interrupt();
+}
+```
+
+---
+
+## 5.2. Finishing threads with interruptions (2)
+In the example: 
+* We create a thread that checks in every loop if it has been interrupted.
+* From the main thread, we wait 1000 miliseconds and then interrupt the thread with the method.
+* This method causes an InterruptedException that makes the thread go to the catch section and finish the run method.
+
+---
+
+## 5.2. Finishing threads with interruptions (3)
+* The InterruptedException is only thrown because of the sleep call in Runnable.
+* This thread would finish just by calling its isInterrupted method.
+
+---
+
+## 5.2 Finishing threads with interruptions (4)
+* However, as we call a method that throws this exception (sleep), we have to use the try...catch structure.
+* A thread decides if it responds to the interruption or not, by using its isInterrupted method and/or by catching the possible exceptions that can be thrown.
+
 
 
 
