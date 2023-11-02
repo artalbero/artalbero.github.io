@@ -1,2 +1,8 @@
 title: Apuntes de Arturo Albero
 description: Aquí voy subiendo pruebas y apuntes.
+permalink: pretty
+markdown: kramdown
+
+navbar_links:
+  - title: Página 1
+    url: /hdocs/1_FirstStepswithThreads.html
